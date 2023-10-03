@@ -1,68 +1,166 @@
-// console.log('zoop 🐼')
 class Animal {
-    constructor(name, species, age, gender) {
+    constructor(name, species, age, gender){
         this.name = name
         this.species = species
         this.age = age
-        this.gender = gender
+        this.gender = gender  
     }
 
-    //describe
-    describe() {
-        console.log(`This is ${this.species} is named ${this.name}. They ${this.age} year-old ${this.gender}!`)
+    describe(){
+        console.log(`This is ${this.species} is named ${this.name}. They are ${this.age} year-old ${this.gender}!`)
     }
-    //feed
-    feed() {
+
+    feed(){
         console.log(`${this.name} is eating.`)
-
     }
-    //make sound
-    makeSound() {
+
+    makeSound(){
         console.log(`${this.name} is making a sound.`)
     }
-    //move
-    move() {
+
+    move(){
         console.log(`${this.name} is moving.`)
-    }
+    }   
 }
 
-const tony = new Animal('Tony', 'tiger', '5', 'best boy');
+//Instantiate
+const tony = new Animal('tony','tiger','5','best boy')
 
 //Tests
-console.log(tony)
-tony.describe()
-tony.feed()
-tony.makeSound()
-tony.move()
+    // console.log(tony)
+    // tony.describe()
+    // tony.feed()
+    // tony.makeSound()
+    // tony.move()
 
+//Extending to a subclass
 class Mammal extends Animal {
-    constructor(name, species, age, gender, furColor) {
+    constructor(name, species, age, gender, furColor){
+        super(name, species, age, gender)
         this.furColor = furColor
     }
-    
-    //describe
-    describe() {
-        console.log(`This is ${this.species} is named ${this.name}. They ${this.age} year-old ${this.gender}!`)
-    }
-    //feed
-    feed() {
-        console.log(`${this.name} is eating.`)
 
+    describe(){
+        console.log(`This ${this.species} is named ${this.name} and has ${this.furColor} fur. They are a ${this.age} year-old ${this.gender}!`)
     }
-    //make sound
-    makeSound() {
-        console.log(`${this.name} is making a sound.`)
+
+    feed(){
+        console.log(`${this.name} is drinking milk.`)
     }
-    //move
-    move() {
-        console.log(`${this.name} is moving.`)
+
+    makeSound(){
+        console.log(`${this.name} is howling.`)
+    }
+
+    move(){
+        console.log(`${this.name} is walking.`)
+    }   
+
+}
+
+class Bird extends Animal {
+    constructor(name, species, age, gender, wingspan){
+        super(name, species, age, gender)
+        this.wingspan = wingspan
+    }
+
+    describe(){
+        console.log(`This ${this.species} is named ${this.name} and has ${this.wingspan} wings. They are a ${this.age} year-old ${this.gender}!`)
+    }
+
+    feed(){
+        console.log(`${this.name} is drinking nectar.`)
+    }
+
+    makeSound(){
+        console.log(`${this.name} is humming.`)
+    }
+
+    move(){
+        console.log(`${this.name} is flitin'round.`)
+    }   
+
+}
+
+class Reptile extends Animal {
+    constructor(name, species, age, gender, scaleColor){
+        super(name, species, age, gender)
+        this.scaleColor = scaleColor
+    }
+
+    describe(){
+        console.log(`This ${this.species} is named ${this.name} and has ${this.scaleColor} scales. They are a ${this.age} year-old ${this.gender}!`)
+    }
+
+    feed(){
+        console.log(`${this.name} is munching on mice.`)
+    }
+
+    makeSound(){
+        console.log(`${this.name} is hissing.`)
+    }
+
+    move(){
+        console.log(`${this.name} is lumberin'long.`)
+    }   
+
+}
+
+//Instantiate
+    const louis = new Mammal('king louis','orangutang','12','king of the jungle','orange')
+    const flit = new Bird('flit','hummingbird','two','speedy','3in')
+    const ticToc = new Reptile('tic-toc','gator','twelve','knobby','iridescent pink')
+
+//Tests
+    // louis.describe()
+    // louis.feed()
+    // louis.makeSound()
+    // louis.move()
+
+class Zoo {
+    constructor(){
+        this.animalsArr = []
+    }
+
+    addAnimal(newAnimal){
+        this.animalsArr.push(newAnimal)
+        //console.log(this.animalsArr)
+    }
+    
+    displayAnimals(){
+        this.animalsArr.forEach(function(animal){
+            animal.describe()
+        })
+    }
+
+    feedAnimals(){
+        this.animalsArr.forEach(function(animal){
+            animal.feed()
+        })
+    }
+
+    listenToAnimals(){
+        this.animalsArr.forEach(function(animal){
+            animal.makeSound()
+        })
+    }
+
+    watchAnimals(){
+        this.animalsArr.forEach(function(animal){
+            animal.move()
+        })
     }
 }
 
-const louis = new Mammal('King Louis', 'orangutang', '12', 'King of the Jungle', 'orange') )
+//Instatiate
+    const zoolanderZoo = new Zoo()
 
-console.log(tony)
-louis.describe()
-louis.feed()
-louis.makeSound()
-louis.move()
+//Tests
+    zoolanderZoo.addAnimal(louis)
+    zoolanderZoo.addAnimal(tony)
+    zoolanderZoo.addAnimal(flit)
+    zoolanderZoo.addAnimal(ticToc)
+    zoolanderZoo.displayAnimals()
+    zoolanderZoo.feedAnimals()
+    zoolanderZoo.listenToAnimals()
+    zoolanderZoo.watchAnimals()
